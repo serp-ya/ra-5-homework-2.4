@@ -37,16 +37,16 @@ class App extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: name === 'age' ? Number(value) : value
     })
   }
 
   render() {
-    const menuItems = ['Google', 'https://google.com', 'Яндекс', 'https://yandex.ru'];
+    const menuItems = [{name: 'Google', url: 'https://google.com'}, {name: 'Яндекс', url: 'https://yandex.ru'}];
 
     return (
       <React.Fragment>
-        <Menu handleSearch={'this.onSearch'} title={'Приложение'} version={'1.3.23'} items={[menuItems]}/>
+        <Menu handleSearch={this.onSearch} title={'Приложение'} version={'1.3'} items={menuItems}/>
         <div className="row">
           <Form {...this.state} handleChange={this.onChange} handleSubmit={this.onSubmit}/>
         </div>
